@@ -1,0 +1,92 @@
+.jobCard {
+  background: var(--colorBgCard);
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadowElev1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadowElev2);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.jobInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.metaInfo {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.companyInfo,
+.locationInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: var(--colorTextSecondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.companyName,
+.locationName {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: var(--colorTextSecondary);
+  line-height: 1.5;
+}
+
+.matchBadge {
+  background: var(--colorAccentPrimary);
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 5px 13px;
+  font-family: var(--fontSans);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.description {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: var(--colorTextSecondary);
+  line-height: 1.5;
+  overflow: hidden;
+}

@@ -1,0 +1,58 @@
+.logo {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 20px;
+
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.navLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--fontSans);
+  font-size: 16px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--colorAccentPrimary);
+  }
+
+  &.active {
+    color: var(--colorAccentPrimary);
+    font-weight: 600;
+  }
+}
+
+.userIcon {
+  display: flex;
+  align-items: center;
+}
+
+.userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--colorAccentPrimary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontSans);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: var(--colorAccentDark);
+  }
+}

@@ -1,0 +1,33 @@
+.main {
+  flex: 1;
+  padding: 48px 32px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contentCard {
+  background: var(--colorBgCard);
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  padding: 49px;
+  text-align: center;
+  box-shadow: var(--shadowElev1);
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--colorTextPrimary);
+  margin: 0 0 16px 0;
+}
+
+.subtitle {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  line-height: 1.5;
+}

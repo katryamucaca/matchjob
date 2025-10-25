@@ -1,0 +1,23 @@
+.main {
+  flex: 1;
+  padding: 48px 32px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--colorTextPrimary);
+  margin: 0;
+}
+
+.subtitle {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: var(--colorTextSecondary);
+  margin: 0;
+}
