@@ -1,0 +1,36 @@
+.buttonContainer {
+  font-family: var(--fontSans);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.primary {
+  background-color: var(--colorAccentPrimary);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--buttonHoverBackgroundColor);
+  }
+}
+
+.secondary {
+  color: var(--colorTextPrimary);
+  border: 2px solid var(--colorAccentSecondary);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    border-color: var(--colorTextPrimary);
+    color: var(--colorTextPrimary);
+  }
+}
