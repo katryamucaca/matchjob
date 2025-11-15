@@ -1,0 +1,30 @@
+.variables {
+  /* Canonical camelCase tokens */
+  --colorAccentPrimary: #ef233c; /* primary CTA */
+  --colorAccentSecondary: #8d99ae; /* borders, icons, muted */
+  --colorAccentDark: #d90429; /* hover/active for primary */
+
+  --colorBgBase: #edf2f4; /* main background */
+  --colorBgCard: #ffffff; /* content cards */
+  --colorBgAlt: #2b2d42; /* headers, footers */
+
+  --colorTextPrimary: #2b2d42; /* primary text */
+  --colorTextSecondary: #8d99ae; /* secondary text */
+
+  /* Shadows */
+  --shadowElev1: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadowElev2: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  /* Typography font variables populated by next/font */
+  /* Fonts are provided as CSS variables on <body> by next/font */
+  --fontSans: var(--font-geist-sans);
+
+  /* Buttons */
+  --buttonBackgroundColor: var(--colorAccentPrimary);
+  --buttonHoverBackgroundColor: var(--colorAccentDark);
+
+  --primaryColor: var(--colorAccentPrimary);
+  --textColor: var(--colorTextPrimary);
+  --paragraphColor: var(--colorTextSecondary);
+  --backgroundColor: var(--colorBgBase);
+}

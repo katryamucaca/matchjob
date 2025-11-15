@@ -1,0 +1,73 @@
+.container {
+  background: var(--colorBgCard);
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  box-shadow: var(--shadowElev2);
+  width: 100%;
+  max-width: 448px;
+  padding: 33px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.subtitle {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.submitButton {
+  height: 48px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 16px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footerText {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.linkButton {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--colorAccentPrimary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
