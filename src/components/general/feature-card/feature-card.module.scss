@@ -1,0 +1,42 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.featureCard {
+  background: var(--colorBgCard);
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  padding: 33px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @include bp.mobile {
+    padding: 32.69px;
+  }
+}
+
+.iconContainer {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: rgba(239, 35, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.title {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  margin: 0;
+}
+
+.description {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+}
+

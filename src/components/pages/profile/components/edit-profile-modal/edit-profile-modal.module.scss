@@ -1,0 +1,110 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.modalContent {
+  max-width: 500px;
+  width: 100%;
+
+  @include bp.mobile {
+    max-width: 100%;
+  }
+}
+
+.container {
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include bp.mobile {
+    padding: 24px 20px 32px;
+    gap: 20px;
+  }
+}
+
+.title {
+  @include title.title2;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  font-weight: 700;
+
+  @include bp.mobile {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.subtitle {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  @include p.paragraphNormal;
+  color: var(--colorTextPrimary);
+  font-weight: 600;
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+    font-weight: 600;
+  }
+}
+
+.input {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+
+  @include bp.mobile {
+    flex-direction: column;
+  }
+}
+
+.cancelButton,
+.saveButton {
+  flex: 1;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+
+  @include bp.mobile {
+    width: 100%;
+  }
+}
+
+.cancelButton {
+  @include bp.mobile {
+    order: 2;
+  }
+}
+
+.saveButton {
+  @include bp.mobile {
+    order: 1;
+  }
+}
+

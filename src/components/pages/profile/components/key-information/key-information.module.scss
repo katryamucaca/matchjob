@@ -1,56 +1,133 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
 .keyInformation {
   background-color: var(--colorBgCard);
   border: 1px solid rgba(var(--colorAccentSecondary), 0.2);
   border-radius: 16px;
-  padding: 25px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   box-shadow: var(--shadowElev1);
+
+  @include bp.tablet {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  @include bp.mobile {
+    padding: 20px;
+    gap: 16px;
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 600;
   color: var(--colorTextPrimary);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
+
+  @include bp.tablet {
+    font-size: 18px;
+  }
+
+  @include bp.mobile {
+    font-size: 18px;
+  }
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+
+  @include bp.mobile {
+    gap: 16px;
+  }
+}
+
+.editButton {
+  border: none;
+  color: var(--colorTextPrimary);
+  background-color: transparent;
+  padding: 8px;
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--colorAccentPrimary);
+    color: var(--colorAccentPrimary);
+  }
+
+  @include bp.mobile {
+    min-width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
 }
 
 .infoRow {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+
+  @include bp.mobile {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 .label {
   font-family: var(--fontSans);
-  font-size: 16px;
+  font-size: 15px;
   color: var(--colorTextSecondary);
-  line-height: 1.5;
+  line-height: 1.6;
   min-width: 180px;
   flex-shrink: 0;
+
+  @include bp.tablet {
+    min-width: 160px;
+    font-size: 14px;
+  }
+
+  @include bp.mobile {
+    min-width: auto;
+    font-size: 14px;
+    font-weight: 600;
+  }
 }
 
 .value {
   font-family: var(--fontSans);
-  font-size: 16px;
+  font-size: 15px;
   color: var(--colorTextPrimary);
-  line-height: 1.5;
+  line-height: 1.6;
   flex: 1;
+  word-break: break-word;
+
+  @include bp.tablet {
+    font-size: 14px;
+  }
+
+  @include bp.mobile {
+    font-size: 15px;
+  }
 }
 
 .technologies {
@@ -58,16 +135,25 @@
   flex-wrap: wrap;
   gap: 8px;
   flex: 1;
+
+  @include bp.mobile {
+    gap: 6px;
+  }
 }
 
 .techBadge {
   background-color: var(--colorAccentPrimary);
   color: #ffffff;
   font-family: var(--fontSans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 5px 13px;
+  padding: 6px 14px;
   border-radius: 50px;
   white-space: nowrap;
-  line-height: 1;
+  line-height: 1.2;
+
+  @include bp.mobile {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
 }

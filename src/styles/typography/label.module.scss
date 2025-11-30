@@ -1,0 +1,14 @@
+@mixin labelMedium {
+  font-family: var(--fontSans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+@mixin labelSmall {
+  font-family: var(--fontSans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+

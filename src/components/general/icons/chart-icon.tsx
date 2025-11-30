@@ -1,0 +1,52 @@
+import React from 'react';
+
+interface ChartIconProps {
+  className?: string;
+}
+
+const ChartIcon: React.FC<ChartIconProps> = ({ className }) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+    >
+      <g>
+        <path
+          d="M3.5 3.5V22.1667C3.5 22.7855 3.74583 23.379 4.18342 23.8166C4.621 24.2542 5.21449 24.5 5.83333 24.5H24.5"
+          stroke="currentColor"
+          strokeWidth="2.33333"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M21 19.8333V10.5"
+          stroke="currentColor"
+          strokeWidth="2.33333"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M15.1667 19.8333V5.83333"
+          stroke="currentColor"
+          strokeWidth="2.33333"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M9.33333 19.8333V16.3333"
+          stroke="currentColor"
+          strokeWidth="2.33333"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export default ChartIcon;
+

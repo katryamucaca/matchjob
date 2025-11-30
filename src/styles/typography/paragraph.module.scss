@@ -1,0 +1,42 @@
+@mixin paragraphLarge {
+  font-family: var(--fontSans);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+@mixin paragraphMedium {
+  font-family: var(--fontSans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+@mixin paragraphNormal {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+@mixin paragraphSmall {
+  font-family: var(--fontSans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+@mixin paragraphMedium500 {
+  font-family: var(--fontSans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+@mixin paragraphSmall500 {
+  font-family: var(--fontSans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+

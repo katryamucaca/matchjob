@@ -1,0 +1,227 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.modalContent {
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  @include bp.mobile {
+    max-width: 100%;
+    max-height: 100vh;
+  }
+}
+
+.container {
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include bp.mobile {
+    padding: 24px 20px 32px;
+    gap: 24px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+
+  @include bp.mobile {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.title {
+  @include title.title2;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  flex: 1;
+  font-weight: 700;
+
+  @include bp.mobile {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.matchBadge {
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 16px;
+  background-color: var(--colorAccentPrimary);
+  color: white;
+  border-radius: 20px;
+
+  @include bp.mobile {
+    align-self: flex-start;
+  }
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+
+  @include bp.mobile {
+    gap: 16px;
+  }
+}
+
+.companyItem,
+.locationItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--colorTextSecondary);
+}
+
+.metaInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(141, 153, 174, 0.2);
+  border-bottom: 1px solid rgba(141, 153, 174, 0.2);
+  flex-wrap: wrap;
+
+  @include bp.mobile {
+    gap: 16px;
+    padding: 12px 0;
+  }
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  @include title.title3;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  font-weight: 600;
+
+  @include bp.mobile {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.sectionText {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  line-height: 1.6;
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+  }
+}
+
+.requirementsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.requirementItem {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  line-height: 1.6;
+  padding-left: 20px;
+  position: relative;
+
+  &::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--colorAccentPrimary);
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+
+  @include bp.mobile {
+    flex-direction: column;
+  }
+}
+
+.primaryButton,
+.secondaryButton {
+  flex: 1;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @include bp.mobile {
+    width: 100%;
+  }
+}
+
+.primaryButton {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.secondaryButton {
+  @include bp.mobile {
+    order: 2;
+  }
+}

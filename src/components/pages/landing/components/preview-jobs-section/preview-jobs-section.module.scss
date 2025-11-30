@@ -1,0 +1,120 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.previewJobsSection {
+  background-color: var(--colorBgBase);
+  padding: 80px 32px;
+  position: relative;
+
+  @include bp.mobile {
+    padding: 48px 16px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+
+  @include bp.mobile {
+    gap: 24px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.heading {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  margin: 0;
+}
+
+.paragraph {
+  @include p.paragraphMedium;
+  color: var(--colorTextSecondary);
+  margin: 0;
+
+  @include bp.mobile {
+    max-width: 366px;
+  }
+}
+
+.jobsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+
+  @include bp.tabletAndBelow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lockedOverlay {
+  position: relative;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.blurredCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  filter: blur(4px);
+  opacity: 0.6;
+
+  @include bp.tabletAndBelow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blurredCard {
+  background: white;
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  height: 128px;
+
+  @include bp.mobile {
+    height: 128px;
+  }
+}
+
+.lockCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 260px;
+
+  @include bp.mobile {
+    min-width: 260px;
+    padding: 24.68px;
+  }
+}
+
+.lockText {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  text-align: center;
+}
+

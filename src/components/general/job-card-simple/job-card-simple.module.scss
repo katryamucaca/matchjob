@@ -1,0 +1,71 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.jobCardSimple {
+  background: var(--colorBgCard);
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+
+  &[role="button"] {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadowElev2);
+      border-color: rgba(239, 35, 60, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--colorAccentPrimary);
+      outline-offset: 2px;
+    }
+  }
+
+  @include bp.mobile {
+    padding: 24.68px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  margin: 0;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+}

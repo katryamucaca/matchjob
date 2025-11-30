@@ -1,21 +1,38 @@
 import React from "react";
 import classes from "./key-information.module.scss";
+import Button from "@/components/general/button/button";
+import EditIcon from "@/components/general/icons/edit-icon";
+import { EButtonVariant } from "@/components/general/button/button.types";
 
 interface KeyInformationProps {
   yearsOfExperience: string;
   specialization: string;
   technologies: string[];
+  onEdit?: () => void;
 }
 
 const KeyInformation: React.FC<KeyInformationProps> = ({
   yearsOfExperience,
   specialization,
   technologies,
+  onEdit,
 }) => {
+  const handleEdit = () => {
+    onEdit?.();
+  };
+
   return (
     <div className={classes.keyInformation}>
       <div className={classes.header}>
         <h3 className={classes.title}>Key Information</h3>
+
+        <Button
+          variant={EButtonVariant.SECONDARY}
+          className={classes.editButton}
+          onClick={handleEdit}
+        >
+          <EditIcon />
+        </Button>
       </div>
 
       <div className={classes.content}>

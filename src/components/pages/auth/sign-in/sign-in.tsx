@@ -1,11 +1,15 @@
+"use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/general/input";
 import Button from "@/components/general/button/button";
 import classes from "./sign-in.module.scss";
 import { EButtonVariant } from "@/components/general/button";
+import { useRouter } from "next/navigation";
 
 const SignIn: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,9 +22,8 @@ const SignIn: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("sign in");
+  const handleSubmit = () => {
+    router.push("/jobs");
   };
 
   return (
@@ -49,7 +52,11 @@ const SignIn: React.FC = () => {
           required
         />
 
-        <Button variant={EButtonVariant.PRIMARY} className={classes.submitButton}>
+        <Button
+          variant={EButtonVariant.PRIMARY}
+          className={classes.submitButton}
+          onClick={handleSubmit}
+        >
           Sign In
         </Button>
       </form>

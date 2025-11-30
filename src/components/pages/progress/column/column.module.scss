@@ -1,0 +1,78 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.columnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 320px;
+  max-width: 320px;
+
+  @include bp.tablet {
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  @include bp.mobile {
+    min-width: 260px;
+    max-width: 260px;
+  }
+}
+
+.columnHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.columnTitle {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  font-weight: 600;
+}
+
+.taskCount {
+  @include p.paragraphSmall500;
+  color: var(--colorTextSecondary);
+  background: rgba(141, 153, 174, 0.1);
+  padding: 4px 10px;
+  border-radius: 12px;
+  min-width: 28px;
+  text-align: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px dashed rgba(141, 153, 174, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 400px;
+  transition: all 0.2s ease;
+
+  @include bp.mobile {
+    min-height: 300px;
+    padding: 12px;
+    gap: 10px;
+  }
+}
+
+.columnOver {
+  background: rgba(239, 35, 60, 0.05);
+  border-color: var(--colorAccentPrimary);
+  border-style: solid;
+}
+
+.emptyState {
+  @include p.paragraphSmall;
+  color: var(--colorTextSecondary);
+  text-align: center;
+  padding: 32px 16px;
+  opacity: 0.6;
+}

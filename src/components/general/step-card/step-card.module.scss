@@ -1,0 +1,57 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.stepCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @include bp.mobile {
+    gap: 16px;
+  }
+}
+
+.iconContainer {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(239, 35, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}
+
+.title {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  text-align: center;
+  margin: 0;
+  max-width: 325px;
+
+  @include bp.mobile {
+    max-width: 100%;
+  }
+}
+

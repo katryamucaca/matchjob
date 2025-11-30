@@ -4,11 +4,12 @@ import React from "react";
 import { Page } from "@/components/general/page";
 import { PageContent } from "@/components/general/page-content";
 import SignIn from "@/components/pages/auth/sign-in/sign-in";
+import classes from '../page.module.scss'
 
 export default function SignInPageRoute() {
   return (
     <Page>
-      <PageContent>
+      <PageContent className={classes.pageContent}>
         <SignIn />
       </PageContent>
     </Page>

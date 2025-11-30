@@ -1,0 +1,35 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/label.module.scss" as label;
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  background-color: var(--colorAccentPrimary);
+  color: white;
+}
+
+.percentage {
+  @include label.labelSmall;
+
+  padding: 5px 13px;
+  height: 26px;
+}
+
+.number {
+  @include label.labelMedium;
+
+  width: 32px;
+  height: 32px;
+}
+
+.success {
+  @include label.labelSmall;
+
+  padding: 4px 12px;
+  background-color: #10b981;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}

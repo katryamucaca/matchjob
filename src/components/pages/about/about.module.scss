@@ -1,33 +1,269 @@
-.main {
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.about {
   flex: 1;
-  padding: 48px 32px;
+  background-color: var(--colorBgBase);
+  padding: 64px 120px;
+  min-height: 100vh;
+
+  @include bp.desktop {
+    padding: 56px 80px;
+  }
+
+  @include bp.tablet {
+    padding: 48px 32px;
+  }
+
+  @include bp.mobile {
+    padding: 40px 16px;
+  }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  @include bp.desktop {
+    gap: 72px;
+  }
+
+  @include bp.tablet {
+    gap: 64px;
+  }
+
+  @include bp.mobile {
+    gap: 48px;
+  }
 }
 
-.contentCard {
-  background: var(--colorBgCard);
-  border: 1px solid rgba(141, 153, 174, 0.2);
-  border-radius: 16px;
-  padding: 49px;
+.hero {
   text-align: center;
-  box-shadow: var(--shadowElev1);
+  max-width: 800px;
+  margin: 0 auto;
+
+  @include bp.mobile {
+    max-width: 100%;
+  }
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 40px;
+  font-weight: 700;
   color: var(--colorTextPrimary);
-  margin: 0 0 16px 0;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+
+  @include bp.desktop {
+    font-size: 36px;
+  }
+
+  @include bp.tablet {
+    font-size: 32px;
+    margin: 0 0 20px 0;
+  }
+
+  @include bp.mobile {
+    font-size: 28px;
+    margin: 0 0 16px 0;
+  }
 }
 
 .subtitle {
   font-family: var(--fontSans);
-  font-size: 16px;
+  font-size: 20px;
   color: var(--colorTextSecondary);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.7;
+
+  @include bp.tablet {
+    font-size: 18px;
+  }
+
+  @include bp.mobile {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+.missionVision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+
+  @include bp.tabletAndBelow {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.missionCard {
+  background: var(--colorBgCard);
+  border-radius: 16px;
+  padding: 48px;
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  box-shadow: var(--shadowElev2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadowElev3);
+  }
+
+  @include bp.desktop {
+    padding: 40px;
+  }
+
+  @include bp.tablet {
+    padding: 36px;
+  }
+
+  @include bp.mobile {
+    padding: 28px 24px;
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(239, 35, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+
+  svg {
+    color: var(--colorAccentPrimary);
+  }
+
+  @include bp.mobile {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 4px;
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.cardTitle {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  line-height: 1.3;
+
+  @include bp.tablet {
+    font-size: 22px;
+  }
+
+  @include bp.mobile {
+    font-size: 20px;
+  }
+}
+
+.cardText {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: var(--colorTextSecondary);
+  line-height: 1.7;
+  margin: 0;
+
+  @include bp.tablet {
+    font-size: 15px;
+  }
+
+  @include bp.mobile {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}
+
+.statsSection {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 56px 48px;
+  background: linear-gradient(135deg, var(--colorBgAlt) 0%, rgba(43, 45, 66, 0.95) 100%);
+  border-radius: 24px;
+  box-shadow: var(--shadowElev2);
+
+  @include bp.desktop {
+    padding: 48px 40px;
+    gap: 28px;
+  }
+
+  @include bp.tablet {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 40px 32px;
+    gap: 32px;
+  }
+
+  @include bp.mobile {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 24px;
+    border-radius: 16px;
+  }
+}
+
+.statCard {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include bp.mobile {
+    gap: 6px;
+  }
+}
+
+.statNumber {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--colorAccentPrimary);
+  line-height: 1;
+
+  @include bp.tablet {
+    font-size: 44px;
+  }
+
+  @include bp.mobile {
+    font-size: 36px;
+  }
+}
+
+.statLabel {
+  font-family: var(--fontSans);
+  font-size: 16px;
+  color: rgba(237, 242, 244, 0.9);
+  font-weight: 500;
+  line-height: 1.4;
+
+  @include bp.tablet {
+    font-size: 15px;
+  }
+
+  @include bp.mobile {
+    font-size: 15px;
+  }
 }
