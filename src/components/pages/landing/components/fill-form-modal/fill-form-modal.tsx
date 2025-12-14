@@ -8,6 +8,7 @@ import { EButtonVariant } from "@/components/general/button/button.types";
 import Input from "@/components/general/input/input";
 import { Textarea } from "@/components/general/textarea";
 import FormIcon from "@/components/general/icons/form-icon";
+import { useAuth } from "@/hooks/useAuth";
 
 interface FillFormModalProps {
   isOpen: boolean;
@@ -30,6 +31,7 @@ const FillFormModal: React.FC<FillFormModalProps> = ({
   onClose,
   onShowMatches,
 }) => {
+  const { setLandingFormData } = useAuth();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -42,6 +44,9 @@ const FillFormModal: React.FC<FillFormModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    setLandingFormData(formData);
+
     onShowMatches();
   };
 

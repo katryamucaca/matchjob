@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import GeneralHeader from "@/components/general/headers/general-header/general-header";
 import ChartIcon from "@/components/general/icons/chart-icon";
 import UserIcon from "@/components/general/icons/user-icon";
@@ -10,12 +13,23 @@ import cn from "classnames";
 import BriefcaseIcon from "../../icons/briefcase-icon";
 import Sidebar, { SidebarNavItem } from "@/components/general/sidebar";
 import UserProfileHeader from "@/components/general/sidebar/user-profile-header";
+import { useAuth } from "@/hooks/useAuth";
+import { useAppSelector } from "@/store/hooks";
 
 interface SignedInHeaderProps {
   currentPath?: string;
 }
 
 const SignedInHeader: React.FC<SignedInHeaderProps> = ({ currentPath }) => {
+  const { signOut } = useAuth();
+  const user = useAppSelector((state) => state.user.profile);
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    signOut();
+    router.push("/");
+  };
+
   const left = (
     <div className={classes.logo}>
       <Link href="/jobs">MatchJob</Link>
@@ -48,20 +62,17 @@ const SignedInHeader: React.FC<SignedInHeaderProps> = ({ currentPath }) => {
       >
         Profile
       </Link>
-      <Link
-        href="/faq"
-        className={cn(classes.navLink, {
-          [classes.active]: currentPath === "/faq",
-        })}
-      >
-        FAQ
-      </Link>
     </nav>
   );
 
   const right = (
-    <div className={classes.userIcon}>
-      <div className={classes.userAvatar}>W</div>
+    <div className={classes.userSection}>
+      <div className={classes.userIcon}>
+        <div className={classes.userAvatar}>{user?.initials || "U"}</div>
+      </div>
+      <button className={classes.signOutButton} onClick={handleSignOut}>
+        Sign Out
+      </button>
     </div>
   );
 
@@ -81,23 +92,18 @@ const SignedInHeader: React.FC<SignedInHeaderProps> = ({ currentPath }) => {
       label: "Profile",
       icon: <UserIcon />,
     },
-    {
-      href: "/faq",
-      label: "FAQ",
-      icon: <HelpCircleIcon />,
-    },
-    {
-      href: "/contact",
-      label: "Contact",
-      icon: <EmailIcon />,
-    },
   ];
 
   const sidebarContent = (
     <Sidebar
       currentPath={currentPath}
       navItems={sidebarNavItems}
-      header={<UserProfileHeader avatar="U" userName="User" />}
+      header={
+        <UserProfileHeader
+          avatar={user?.initials || "U"}
+          userName={user?.fullName || "User"}
+        />
+      }
     />
   );
 

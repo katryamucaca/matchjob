@@ -1,28 +1,59 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Input } from "@/components/general/input";
 import Button from "@/components/general/button/button";
 import classes from "./sign-up.module.scss";
 import { EButtonVariant } from "@/components/general/button";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 
 const SignUp: React.FC = () => {
   const router = useRouter();
+  const { signUp, isLoading, error, isAuthenticated, landingFormData, clearError } = useAuth();
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
+    fullName: landingFormData?.name || "",
+    email: landingFormData?.email || "",
     password: "",
   });
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/jobs");
+    }
+  }, [isAuthenticated, router]);
+
+  useEffect(() => {
+    if (landingFormData) {
+      setFormData((prev) => ({
+        ...prev,
+        fullName: landingFormData.name,
+        email: landingFormData.email,
+      }));
+    }
+  }, [landingFormData]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
     }));
+    
+    if (error) {
+      clearError();
+    }
   };
 
-  const handleSubmit = () => {
-    router.push("/jobs");
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
+    await signUp({
+      fullName: formData.fullName,
+      email: formData.email,
+      password: formData.password,
+    });
   };
 
   return (
@@ -33,6 +64,12 @@ const SignUp: React.FC = () => {
       </div>
 
       <form className={classes.form} onSubmit={handleSubmit}>
+        {error && (
+          <div className={classes.error}>
+            {error}
+          </div>
+        )}
+
         <Input
           type="text"
           label="Full Name"
@@ -64,8 +101,9 @@ const SignUp: React.FC = () => {
           variant={EButtonVariant.PRIMARY}
           onClick={handleSubmit}
           className={classes.submitButton}
+          disabled={isLoading}
         >
-          Sign Up
+          {isLoading ? "Creating Account..." : "Sign Up"}
         </Button>
       </form>
 

@@ -6,8 +6,9 @@ import { Progress } from "@/components/pages/progress";
 import { Page } from "@/components/general/page";
 import { PageContent } from "@/components/general/page-content";
 import SignedInHeader from "@/components/general/headers/signed-in-header/signed-in-header";
+import { withAuth } from "@/components/hoc/withAuth";
 
-export default function ProgressPage() {
+function ProgressPage() {
   return (
     <Page>
       <SignedInHeader currentPath="/progress" />
@@ -20,3 +21,5 @@ export default function ProgressPage() {
     </Page>
   );
 }
+
+export default withAuth(ProgressPage);

@@ -5,8 +5,9 @@ import { Page } from "@/components/general/page";
 import { PageContent } from "@/components/general/page-content";
 import SignIn from "@/components/pages/auth/sign-in/sign-in";
 import classes from '../page.module.scss'
+import { withGuest } from "@/components/hoc/withGuest";
 
-export default function SignInPageRoute() {
+function SignInPageRoute() {
   return (
     <Page>
       <PageContent className={classes.pageContent}>
@@ -15,3 +16,5 @@ export default function SignInPageRoute() {
     </Page>
   );
 }
+
+export default withGuest(SignInPageRoute);

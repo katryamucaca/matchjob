@@ -1,25 +1,35 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { JobCard, JobData } from "@/components/general/job-card";
 import { JobDetailModal } from "@/components/general/job-detail-modal";
 import classes from "./jobs.module.scss";
-import { ExtendedJobData, SAMPLE_JOBS } from "@/constants/sample-jobs";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchJobs, selectJob, clearSelectedJob } from "@/store/slices/jobsSlice";
+import { selectFilteredJobs, selectSelectedJob, selectJobsLoading } from "@/store/selectors/jobsSelectors";
+import { LoadingSpinner } from "@/components/general/loading-spinner";
 
 const Jobs: React.FC = () => {
-  const [selectedJob, setSelectedJob] = useState<ExtendedJobData | null>(null);
+  const dispatch = useAppDispatch();
+  const jobs = useAppSelector(selectFilteredJobs);
+  const selectedJob = useAppSelector(selectSelectedJob);
+  const isLoading = useAppSelector(selectJobsLoading);
+
+  useEffect(() => {
+    dispatch(fetchJobs());
+  }, [dispatch]);
 
   const handleJobClick = (job: JobData) => {
-    const extendedJob = SAMPLE_JOBS.find((j) => j.id === job.id);
-
-    if (extendedJob) {
-      setSelectedJob(extendedJob);
-    }
+    dispatch(selectJob(job.id));
   };
 
   const handleCloseModal = () => {
-    setSelectedJob(null);
+    dispatch(clearSelectedJob());
   };
+
+  if (isLoading) {
+    return <LoadingSpinner fullScreen message="Loading jobs..." />;
+  }
 
   return (
     <>
@@ -29,13 +39,13 @@ const Jobs: React.FC = () => {
             <div className={classes.titleSection}>
               <h1 className={classes.title}>Job Matches</h1>
               <p className={classes.subtitle}>
-                Found {SAMPLE_JOBS.length} positions matching your profile
+                Found {jobs.length} positions matching your profile
               </p>
             </div>
           </div>
 
           <div className={classes.jobsGrid}>
-            {SAMPLE_JOBS.map((job) => (
+            {jobs.map((job) => (
               <JobCard key={job.id} job={job} onClick={handleJobClick} />
             ))}
           </div>
