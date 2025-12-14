@@ -6,6 +6,8 @@ import { Modal } from "@/components/general/modal";
 import Button from "@/components/general/button/button";
 import { EButtonVariant } from "@/components/general/button/button.types";
 import Input from "@/components/general/input/input";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { updateKeyInfo } from "@/store/slices/userSlice";
 
 interface EditKeyInfoModalProps {
   isOpen: boolean;
@@ -22,12 +24,26 @@ const EditKeyInfoModal: React.FC<EditKeyInfoModalProps> = ({
   onClose,
   initialData,
 }) => {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((state) => state.user.isLoading);
   const [formData, setFormData] = useState({
     yearsOfExperience: initialData?.yearsOfExperience || "",
     specialization: initialData?.specialization || "",
     technologies: initialData?.technologies || [],
   });
   const [technologyInput, setTechnologyInput] = useState("");
+
+  const handleSave = async () => {
+    await dispatch(updateKeyInfo({
+      yearsOfExperience: formData.yearsOfExperience.includes("year")
+        ? formData.yearsOfExperience
+        : `${formData.yearsOfExperience} years`,
+      specialization: formData.specialization,
+      technologies: formData.technologies,
+    }));
+    
+    onClose();
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} className={classes.modalContent}>
@@ -98,15 +114,17 @@ const EditKeyInfoModal: React.FC<EditKeyInfoModalProps> = ({
             variant={EButtonVariant.SECONDARY}
             className={classes.cancelButton}
             onClick={onClose}
+            disabled={isLoading}
           >
             Cancel
           </Button>
           <Button
             variant={EButtonVariant.PRIMARY}
             className={classes.saveButton}
-            onClick={onClose}
+            onClick={handleSave}
+            disabled={isLoading}
           >
-            Save Changes
+            {isLoading ? "Saving..." : "Save Changes"}
           </Button>
         </div>
       </div>

@@ -8,25 +8,12 @@ import { EditProfileModal } from "./components/edit-profile-modal";
 import { UploadNewResumeModal } from "./components/upload-new-resume-modal";
 import { EditKeyInfoModal } from "./components/edit-key-info-modal";
 import classes from "./profile.module.scss";
-
-// example user data
-const sampleUserData = {
-  name: "User",
-  email: "user@email.com",
-  initials: "U",
-  yearsOfExperience: "5 years",
-  specialization: "Frontend Development",
-  technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Node.js", "Git"],
-  resumeSummary: [
-    "Experienced frontend developer with 5+ years building responsive, user-centric web applications using modern JavaScript frameworks.",
-    "Led development of customer-facing dashboard that increased user engagement by 40% and reduced support tickets by 25%.",
-    "Strong expertise in React ecosystem including hooks, context API, and state management with Redux and Zustand.",
-    "Proven track record of collaborating with cross-functional teams to deliver high-quality products on tight deadlines.",
-    "Passionate about accessibility, performance optimization, and creating intuitive user interfaces that delight users.",
-  ],
-};
+import { useAppSelector } from "@/store/hooks";
 
 const Profile: React.FC = () => {
+  const userState = useAppSelector((state) => state.user);
+  const { profile, keyInfo, resume } = userState;
+
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
   const [isUploadResumeModalOpen, setIsUploadResumeModalOpen] = useState(false);
   const [isEditKeyInfoModalOpen, setIsEditKeyInfoModalOpen] = useState(false);
@@ -48,22 +35,22 @@ const Profile: React.FC = () => {
       <main className={classes.main}>
         <div className={classes.container}>
           <ProfileHeader
-            name={sampleUserData.name}
-            email={sampleUserData.email}
-            initials={sampleUserData.initials}
+            name={profile.fullName}
+            email={profile.email}
+            initials={profile.initials}
             onEditProfile={handleEditProfile}
             onUploadResume={handleUploadResume}
           />
 
           <div className={classes.profileDetails}>
             <KeyInformation
-              yearsOfExperience={sampleUserData.yearsOfExperience}
-              specialization={sampleUserData.specialization}
-              technologies={sampleUserData.technologies}
+              yearsOfExperience={keyInfo.yearsOfExperience}
+              specialization={keyInfo.specialization}
+              technologies={keyInfo.technologies}
               onEdit={handleEditKeyInfo}
             />
 
-            <ResumeSummary summaryPoints={sampleUserData.resumeSummary} />
+            <ResumeSummary summaryPoints={resume.summaryPoints} />
           </div>
         </div>
       </main>
@@ -72,8 +59,8 @@ const Profile: React.FC = () => {
         isOpen={isEditProfileModalOpen}
         onClose={() => setIsEditProfileModalOpen(false)}
         initialData={{
-          fullName: sampleUserData.name,
-          email: sampleUserData.email,
+          fullName: profile.fullName,
+          email: profile.email,
         }}
       />
       <UploadNewResumeModal
@@ -84,9 +71,9 @@ const Profile: React.FC = () => {
         isOpen={isEditKeyInfoModalOpen}
         onClose={() => setIsEditKeyInfoModalOpen(false)}
         initialData={{
-          yearsOfExperience: sampleUserData.yearsOfExperience.replace(" years", ""),
-          specialization: sampleUserData.specialization,
-          technologies: sampleUserData.technologies,
+          yearsOfExperience: keyInfo.yearsOfExperience.replace(" years", ""),
+          specialization: keyInfo.specialization,
+          technologies: keyInfo.technologies,
         }}
       />
     </>

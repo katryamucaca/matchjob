@@ -20,6 +20,11 @@
   }
 }
 
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .secondary {
   color: var(--colorTextPrimary);
   border: 2px solid var(--colorAccentSecondary);

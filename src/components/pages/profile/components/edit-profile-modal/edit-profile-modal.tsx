@@ -6,6 +6,8 @@ import { Modal } from "@/components/general/modal";
 import Button from "@/components/general/button/button";
 import { EButtonVariant } from "@/components/general/button/button.types";
 import Input from "@/components/general/input/input";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { updateProfile } from "@/store/slices/userSlice";
 
 interface EditProfileModalProps {
   isOpen: boolean;
@@ -21,10 +23,18 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({
   onClose,
   initialData,
 }) => {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((state) => state.user.isLoading);
   const [formData, setFormData] = useState({
     fullName: initialData?.fullName || "",
     email: initialData?.email || "",
   });
+
+  const handleSave = async () => {
+    await dispatch(updateProfile(formData));
+    
+    onClose();
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} className={classes.modalContent}>
@@ -61,15 +71,17 @@ const EditProfileModal: React.FC<EditProfileModalProps> = ({
             variant={EButtonVariant.SECONDARY}
             className={classes.cancelButton}
             onClick={onClose}
+            disabled={isLoading}
           >
             Cancel
           </Button>
           <Button
             variant={EButtonVariant.PRIMARY}
             className={classes.saveButton}
-            onClick={onClose}
+            onClick={handleSave}
+            disabled={isLoading}
           >
-            Save Changes
+            {isLoading ? "Saving..." : "Save Changes"}
           </Button>
         </div>
       </div>

@@ -5,6 +5,8 @@ import classes from "./upload-new-resume-modal.module.scss";
 import { Modal } from "@/components/general/modal";
 import Button from "@/components/general/button/button";
 import { EButtonVariant } from "@/components/general/button/button.types";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { uploadResume } from "@/store/slices/userSlice";
 
 interface UploadNewResumeModalProps {
   isOpen: boolean;
@@ -12,9 +14,19 @@ interface UploadNewResumeModalProps {
 }
 
 const UploadNewResumeModal: React.FC<UploadNewResumeModalProps> = ({ isOpen, onClose }) => {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((state) => state.user.isLoading);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleUpload = async () => {
+    if (selectedFile) {
+      await dispatch(uploadResume(selectedFile));
+      
+      handleClose();
+    }
+  };
 
   const handleFileSelect = (file: File) => {
     if (file && (file.type === "application/pdf" || file.name.endsWith(".pdf"))) {
@@ -128,8 +140,17 @@ const UploadNewResumeModal: React.FC<UploadNewResumeModalProps> = ({ isOpen, onC
             variant={EButtonVariant.SECONDARY}
             className={classes.cancelButton}
             onClick={handleClose}
+            disabled={isLoading}
           >
             Cancel
+          </Button>
+          <Button
+            variant={EButtonVariant.PRIMARY}
+            className={classes.uploadButton}
+            onClick={handleUpload}
+            disabled={!selectedFile || isLoading}
+          >
+            {isLoading ? "Uploading..." : "Upload Resume"}
           </Button>
         </div>
       </div>

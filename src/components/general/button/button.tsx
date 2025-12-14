@@ -7,17 +7,20 @@ interface IButtonProps {
   variant: EButtonVariant;
   children: React.ReactNode;
   className?: string;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
-const Button: React.FC<IButtonProps> = ({ variant, children, className, onClick }) => {
+const Button: React.FC<IButtonProps> = ({ variant, children, className, disabled, onClick }) => {
   return (
     <button
       className={cn(classes.buttonContainer, className, {
         [classes.primary]: variant === EButtonVariant.PRIMARY,
         [classes.secondary]: variant === EButtonVariant.SECONDARY,
+        [classes.disabled]: disabled,
       })}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

@@ -6,8 +6,9 @@ import { Profile } from "@/components/pages/profile";
 import { Page } from "@/components/general/page";
 import { PageContent } from "@/components/general/page-content";
 import SignedInHeader from "@/components/general/headers/signed-in-header/signed-in-header";
+import { withAuth } from "@/components/hoc/withAuth";
 
-export default function ProfilePage() {
+function ProfilePage() {
   return (
     <Page>
       <SignedInHeader currentPath="/profile" />
@@ -20,3 +21,5 @@ export default function ProfilePage() {
     </Page>
   );
 }
+
+export default withAuth(ProfilePage);
