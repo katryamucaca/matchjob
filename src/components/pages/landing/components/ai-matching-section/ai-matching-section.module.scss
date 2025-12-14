@@ -1,0 +1,82 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.aiMatchingSection {
+  background-color: var(--colorBgCard);
+  padding: 80px 32px;
+  overflow: hidden;
+
+  @include bp.mobile {
+    padding: 80px 16px;
+  }
+}
+
+.container {
+  max-width: 832px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.iconWrapper {
+  margin-bottom: 32px;
+}
+
+.iconBackground {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: rgba(239, 35, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sparkle {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+}
+
+.heading {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  text-align: center;
+  margin: 0;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  max-width: 768px;
+
+  @include bp.mobile {
+    max-width: 100%;
+  }
+}
+
+.textNormal,
+.textHighlight {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+}
+
+.textHighlight {
+  @include bp.mobile {
+    max-width: 355px;
+    margin: 0 auto;
+  }
+}
+
+.highlight {
+  color: var(--colorAccentPrimary);
+}
+

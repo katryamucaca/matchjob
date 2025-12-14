@@ -1,0 +1,60 @@
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include bp.mobile {
+    gap: 12px;
+  }
+}
+
+.sidebarAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--colorAccentPrimary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fontSans);
+  font-weight: 600;
+  font-size: 24px;
+  flex-shrink: 0;
+
+  @include bp.mobile {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-family: var(--fontSans);
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 4px;
+
+  @include bp.mobile {
+    font-size: 18px;
+  }
+}
+
+.userStatus {
+  font-family: var(--fontSans);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+
+  @include bp.mobile {
+    font-size: 13px;
+  }
+}
+

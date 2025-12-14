@@ -8,7 +8,7 @@ import { PageContent } from "@/components/general/page-content";
 export default function FAQPage() {
   return (
     <Page>
-      <GuestHeader />
+      <GuestHeader currentPath="/faq" />
 
       <PageContent>
         <FAQ />

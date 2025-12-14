@@ -4,8 +4,10 @@ import { Input } from "@/components/general/input";
 import Button from "@/components/general/button/button";
 import classes from "./sign-up.module.scss";
 import { EButtonVariant } from "@/components/general/button";
+import { useRouter } from "next/navigation";
 
 const SignUp: React.FC = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -19,9 +21,8 @@ const SignUp: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("sign up");
+  const handleSubmit = () => {
+    router.push("/jobs");
   };
 
   return (
@@ -59,7 +60,11 @@ const SignUp: React.FC = () => {
           required
         />
 
-        <Button variant={EButtonVariant.PRIMARY} className={classes.submitButton}>
+        <Button
+          variant={EButtonVariant.PRIMARY}
+          onClick={handleSubmit}
+          className={classes.submitButton}
+        >
           Sign Up
         </Button>
       </form>

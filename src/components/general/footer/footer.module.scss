@@ -1,3 +1,5 @@
+@use "@/styles/breakpoints.module.scss" as bp;
+
 .footer {
   background: var(--colorBgAlt);
   border-top: 1px solid rgba(141, 153, 174, 0.2);
@@ -15,6 +17,11 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 32px;
   margin-bottom: 32px;
+
+  @include bp.mobile {
+    gap: 48px;
+    grid-template-columns: 1fr;
+  }
 }
 
 .companySection {
@@ -121,4 +128,3 @@
   color: var(--colorTextSecondary);
   margin: 0;
 }
-

@@ -1,0 +1,113 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.modalContent {
+  max-width: 608px;
+  width: 100%;
+}
+
+.container {
+  padding: 48px 50px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include bp.mobile {
+    padding: 32px 24px;
+  }
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+
+  &:hover {
+    background-color: rgba(141, 153, 174, 0.1);
+  }
+
+  span {
+    @include p.paragraphSmall;
+    color: var(--colorTextSecondary);
+    font-weight: 500;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.uploadCard {
+  border: 2px dashed rgba(141, 153, 174, 0.3);
+  border-radius: 16px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &.dragging {
+    border-color: var(--colorAccentPrimary);
+    background-color: rgba(239, 35, 60, 0.05);
+  }
+
+  @include bp.mobile {
+    padding: 32px 24px;
+  }
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(239, 35, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  font-weight: 600;
+}
+
+.description {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  max-width: 400px;
+}
+
+.fileName {
+  @include p.paragraphSmall;
+  color: var(--colorAccentPrimary);
+  margin: 0;
+  font-weight: 500;
+}
+
+.fileInput {
+  display: none;
+}
+
+.chooseButton {
+  margin-top: 8px;
+  min-width: 132px;
+  height: 48px;
+  font-size: 16px;
+}
+

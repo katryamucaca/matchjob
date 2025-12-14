@@ -1,0 +1,11 @@
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.pageContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include bp.mobile {
+    padding: 20px;
+  }
+}

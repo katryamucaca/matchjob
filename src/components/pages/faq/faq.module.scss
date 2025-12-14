@@ -1,6 +1,25 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
 .main {
   flex: 1;
-  padding: 48px 32px;
+  padding: 64px 120px;
+  background: var(--colorBgBase);
+  min-height: 100vh;
+
+  @include bp.desktop {
+    padding: 56px 80px;
+  }
+
+  @include bp.tablet {
+    padding: 48px 32px;
+  }
+
+  @include bp.mobile {
+    padding: 32px 16px;
+  }
 }
 
 .container {
@@ -10,41 +29,89 @@
 
 .header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
+
+  @include bp.tablet {
+    margin-bottom: 48px;
+  }
+
+  @include bp.mobile {
+    margin-bottom: 40px;
+  }
 }
 
 .title {
   font-family: var(--font-serif);
-  font-size: 32px;
+  font-size: 40px;
+  font-weight: 700;
   color: var(--colorTextPrimary);
   margin: 0 0 16px 0;
+  line-height: 1.2;
+
+  @include bp.desktop {
+    font-size: 36px;
+  }
+
+  @include bp.tablet {
+    font-size: 32px;
+  }
+
+  @include bp.mobile {
+    font-size: 28px;
+    margin: 0 0 12px 0;
+  }
 }
 
 .subtitle {
   font-family: var(--fontSans);
-  font-size: 16px;
+  font-size: 18px;
   color: var(--colorTextSecondary);
-  margin: 0;
-  line-height: 1.5;
+  margin: 0 auto;
+  line-height: 1.6;
+  max-width: 600px;
+
+  @include bp.tablet {
+    font-size: 16px;
+  }
+
+  @include bp.mobile {
+    font-size: 15px;
+    line-height: 1.5;
+  }
 }
 
 .faqList {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @include bp.mobile {
+    gap: 12px;
+  }
 }
 
 .faqItem {
   background: var(--colorBgCard);
   border: 1px solid rgba(141, 153, 174, 0.2);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadowElev1);
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    border-color: rgba(141, 153, 174, 0.3);
+  }
+
+  @include bp.mobile {
+    border-radius: 12px;
+  }
 }
 
 .question {
   width: 100%;
-  padding: 24px;
+  padding: 28px;
   background: none;
   border: none;
   text-align: left;
@@ -52,23 +119,55 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   font-family: var(--fontSans);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--colorTextPrimary);
   transition: background-color 0.2s ease;
+  line-height: 1.4;
 
   &:hover {
     background: rgba(141, 153, 174, 0.05);
   }
+
+  @include bp.tablet {
+    padding: 24px;
+    font-size: 17px;
+    gap: 16px;
+  }
+
+  @include bp.mobile {
+    padding: 20px;
+    font-size: 16px;
+    gap: 12px;
+  }
+
+  span:first-child {
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+  }
 }
 
 .icon {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 300;
   color: var(--colorAccentPrimary);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
   line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include bp.mobile {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .icon.open {
@@ -76,9 +175,17 @@
 }
 
 .answer {
-  padding: 0 24px 24px 24px;
+  padding: 0 28px 28px 28px;
   border-top: 1px solid rgba(141, 153, 174, 0.1);
-  animation: slideDown 0.2s ease-out;
+  animation: slideDown 0.3s ease-out;
+
+  @include bp.tablet {
+    padding: 0 24px 24px 24px;
+  }
+
+  @include bp.mobile {
+    padding: 0 20px 20px 20px;
+  }
 }
 
 .answer p {
@@ -86,8 +193,19 @@
   font-size: 16px;
   color: var(--colorTextSecondary);
   margin: 0;
-  line-height: 1.6;
-  padding-top: 16px;
+  line-height: 1.7;
+  padding-top: 20px;
+
+  @include bp.tablet {
+    font-size: 15px;
+    padding-top: 16px;
+  }
+
+  @include bp.mobile {
+    font-size: 15px;
+    line-height: 1.6;
+    padding-top: 16px;
+  }
 }
 
 @keyframes slideDown {

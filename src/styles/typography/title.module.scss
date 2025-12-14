@@ -1,0 +1,40 @@
+@mixin title1Desktop {
+  font-family: var(--font-serif);
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin title1Mobile {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin title2 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin title3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin title4 {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-style: normal;
+}
+

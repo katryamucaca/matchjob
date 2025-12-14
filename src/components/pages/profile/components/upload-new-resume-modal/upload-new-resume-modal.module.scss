@@ -1,0 +1,159 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.modalContent {
+  max-width: 500px;
+  width: 100%;
+
+  @include bp.mobile {
+    max-width: 100%;
+  }
+}
+
+.container {
+  padding: 32px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include bp.mobile {
+    padding: 24px 20px 32px;
+    gap: 20px;
+  }
+}
+
+.title {
+  @include title.title2;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  font-weight: 700;
+
+  @include bp.mobile {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+.subtitle {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+  }
+}
+
+.uploadArea {
+  border: 2px dashed rgba(141, 153, 174, 0.3);
+  border-radius: 16px;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  background: rgba(239, 35, 60, 0.02);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &.dragging {
+    border-color: var(--colorAccentPrimary);
+    background: rgba(239, 35, 60, 0.05);
+  }
+
+  &.hasFile {
+    border-color: var(--colorAccentPrimary);
+    background: rgba(239, 35, 60, 0.03);
+  }
+
+  @include bp.mobile {
+    padding: 40px 24px;
+    gap: 12px;
+  }
+}
+
+.uploadIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(239, 35, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--colorAccentPrimary);
+
+  @include bp.mobile {
+    width: 56px;
+    height: 56px;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+.uploadTitle {
+  @include title.title3;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  font-weight: 600;
+
+  @include bp.mobile {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.uploadText {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+
+  @include bp.mobile {
+    @include p.paragraphSmall;
+  }
+}
+
+.fileName {
+  @include p.paragraphSmall;
+  color: var(--colorAccentPrimary);
+  margin: 8px 0 0;
+  font-weight: 600;
+}
+
+.fileInput {
+  display: none;
+}
+
+.chooseButton {
+  margin-top: 8px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+
+  @include bp.mobile {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+
+  @include bp.mobile {
+    width: 100%;
+  }
+}
+
+.cancelButton {
+  width: 100%;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+}
+

@@ -1,11 +1,7 @@
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+@use "@/styles/design-variables.module.scss" as vars;
 
-.title {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  color: var(--colorTextPrimary);
-  margin: 0;
+.landing {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--colorBgBase);
 }

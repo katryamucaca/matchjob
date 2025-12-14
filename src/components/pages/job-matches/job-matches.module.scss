@@ -1,0 +1,243 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.jobMatches {
+  min-height: 100vh;
+  padding: 80px 32px 100px;
+
+  @include bp.mobile {
+    padding: 60px 16px 80px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+
+  @include bp.mobile {
+    gap: 24px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding-top: 40px;
+
+  @include bp.mobile {
+    padding-top: 20px;
+  }
+}
+
+.iconWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  animation: pulse 2s infinite;
+  box-shadow: 0 8px 24px rgba(239, 35, 60, 0.15);
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 8px 24px rgba(239, 35, 60, 0.15);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(239, 35, 60, 0.25);
+    }
+  }
+
+  @include bp.mobile {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.title {
+  @include title.title1Desktop;
+  color: var(--colorTextPrimary);
+  margin: 0;
+  max-width: 800px;
+
+  @include bp.mobile {
+    @include title.title1Mobile;
+  }
+}
+
+.subtitle {
+  @include p.paragraphLarge;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  max-width: 600px;
+
+  @include bp.mobile {
+    @include p.paragraphMedium;
+  }
+}
+
+.previewSection {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+.previewLabel {
+  @include p.paragraphMedium;
+  color: var(--colorTextPrimary);
+  font-weight: 600;
+  text-align: center;
+}
+
+.jobsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+
+  @include bp.tabletAndBelow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lockedSection {
+  position: relative;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.blurredCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  filter: blur(6px);
+  opacity: 0.5;
+
+  @include bp.tabletAndBelow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blurredCard {
+  background: white;
+  border: 1px solid rgba(141, 153, 174, 0.2);
+  border-radius: 16px;
+  height: 180px;
+  box-shadow: var(--shadowElev1);
+
+  @include bp.mobile {
+    height: 160px;
+  }
+}
+
+.lockCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 2px solid rgba(239, 35, 60, 0.2);
+  border-radius: 20px;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 320px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+
+  @include bp.mobile {
+    min-width: 280px;
+    padding: 24px 28px;
+  }
+}
+
+.lockIconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(141, 153, 174, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include bp.mobile {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.lockText {
+  @include p.paragraphMedium;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+
+  @include bp.mobile {
+    @include p.paragraphNormal;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 16px;
+}
+
+.signUpButton {
+  width: 100%;
+  height: 56px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(239, 35, 60, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(239, 35, 60, 0.4);
+  }
+}
+
+.signinPrompt {
+  @include p.paragraphNormal;
+  color: var(--colorTextSecondary);
+  margin: 0;
+  text-align: center;
+}
+
+.signinLink {
+  background: none;
+  border: none;
+  color: var(--colorAccentPrimary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--colorAccentDark);
+    text-decoration: underline;
+  }
+}

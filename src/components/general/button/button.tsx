@@ -13,7 +13,7 @@ interface IButtonProps {
 const Button: React.FC<IButtonProps> = ({ variant, children, className, onClick }) => {
   return (
     <button
-      className={cn(classes.button, className, {
+      className={cn(classes.buttonContainer, className, {
         [classes.primary]: variant === EButtonVariant.PRIMARY,
         [classes.secondary]: variant === EButtonVariant.SECONDARY,
       })}

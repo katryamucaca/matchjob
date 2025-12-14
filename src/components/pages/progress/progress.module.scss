@@ -1,15 +1,77 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding: 40px;
+  background: var(--colorBgBase);
+  min-height: 100vh;
+
+  @include bp.tablet {
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  @include bp.mobile {
+    padding: 24px 16px;
+    gap: 20px;
+  }
 }
 
 .title {
-  font-family: var(--font-serif);
-  font-size: 16px;
+  @include title.title1Mobile;
   color: var(--colorTextPrimary);
   margin: 0;
-  line-height: 1.5;
+
+  @include bp.desktop {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @include bp.tablet {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  @include bp.mobile {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.board {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(141, 153, 174, 0.1);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(141, 153, 174, 0.3);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba(141, 153, 174, 0.5);
+    }
+  }
+
+  @include bp.tablet {
+    gap: 16px;
+  }
+
+  @include bp.mobile {
+    gap: 12px;
+  }
 }

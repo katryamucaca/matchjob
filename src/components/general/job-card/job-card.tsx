@@ -21,9 +21,7 @@ interface JobCardProps {
 
 const JobCard: React.FC<JobCardProps> = ({ job, className, onClick }) => {
   const handleClick = () => {
-    if (onClick) {
-      onClick(job);
-    }
+    onClick?.(job);
   };
 
   return (

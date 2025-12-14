@@ -1,0 +1,56 @@
+@use "@/styles/design-variables.module.scss" as vars;
+@use "@/styles/typography/title.module.scss" as title;
+@use "@/styles/typography/paragraph.module.scss" as p;
+@use "@/styles/breakpoints.module.scss" as bp;
+
+.whyMatchJobSection {
+  background-color: var(--colorBgBase);
+  padding: 80px 32px;
+
+  @include bp.mobile {
+    padding: 80px 16px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+
+  @include bp.mobile {
+    gap: 16px;
+  }
+}
+
+.heading {
+  @include title.title4;
+  color: var(--colorTextPrimary);
+  margin: 0;
+}
+
+.paragraph {
+  @include p.paragraphMedium;
+  color: var(--colorTextSecondary);
+  margin: 0;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+
+  @include bp.tabletAndBelow {
+    grid-template-columns: 1fr;
+  }
+}
+

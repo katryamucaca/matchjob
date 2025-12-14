@@ -21,19 +21,11 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   onUploadResume,
 }) => {
   const handleEditProfile = () => {
-    if (onEditProfile) {
-      onEditProfile();
-    } else {
-      console.log("Edit profile clicked");
-    }
+    onEditProfile?.();
   };
 
   const handleUploadResume = () => {
-    if (onUploadResume) {
-      onUploadResume();
-    } else {
-      console.log("Upload resume clicked");
-    }
+    onUploadResume?.();
   };
 
   return (
